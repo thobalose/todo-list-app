@@ -4,7 +4,8 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "ejs": "^2.5.5",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "method-override": "^3.0.0"
   },
   "author": "riaan@entersekt.com",
   "description": "Basic to do list exercise"

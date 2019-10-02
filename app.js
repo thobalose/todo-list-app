@@ -1,10 +1,23 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({
-    extended: false
-});
+const express = require('express'),
+    bodyParser = require('body-parser'),
+    // In order to use PUT HTTP verb to edit item
+    methodOverride = require('method-override'),
+    app = express(),
+    port = 8080
 
-const app = express();
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+// https: //github.com/expressjs/method-override#custom-logic
+app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        // look in urlencoded POST bodies and delete it
+        let method = req.body._method;
+        delete req.body._method;
+        return method
+    }
+}));
+
 
 let todolist = [];
 
@@ -17,7 +30,7 @@ app.get('/todo', function (req, res) {
     })
 
     /* Adding an item to the to do list */
-    .post('/todo/add/', urlencodedParser, function (req, res) {
+    .post('/todo/add/', function (req, res) {
         if (req.body.newtodo != '') {
             todolist.push(req.body.newtodo);
         }
@@ -32,9 +45,37 @@ app.get('/todo', function (req, res) {
         res.redirect('/todo');
     })
 
+    // Get a single todo item and render edit page
+    .get('/todo/:id', function (req, res) {
+        let todoIdx = req.params.id;
+        let todo = todolist[todoIdx];
+
+        if (todo) {
+            res.render('edititem.ejs', {
+                todoIdx,
+                todo,
+                clickHandler: "func1();"
+            });
+        } else {
+            res.redirect('/todo');
+        }
+    })
+
+    // Edit item in the todo list 
+    .put('/todo/edit/:id', function (req, res) {
+        let todoIdx = req.params.id;
+        let editTodo = req.body.editTodo;
+        if (todoIdx != '' && editTodo != '') {
+            todolist[todoIdx] = editTodo;
+        }
+        res.redirect('/todo');
+    })
     /* Redirects to the to do list if the page requested is not found */
     .use(function (req, res, next) {
         res.redirect('/todo');
     })
 
-    .listen(8080);
+    .listen(port, function () {
+        // Logging to console
+        console.log(`Todolist running on http://0.0.0.0:${port}`)
+    });
