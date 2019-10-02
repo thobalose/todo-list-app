@@ -2,6 +2,8 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     // In order to use PUT HTTP verb to edit item
     methodOverride = require('method-override'),
+    // Mitigate XSS using sanitizer
+    sanitizer = require('sanitizer'),
     app = express(),
     port = 8080
 
@@ -31,8 +33,10 @@ app.get('/todo', function (req, res) {
 
     /* Adding an item to the to do list */
     .post('/todo/add/', function (req, res) {
+        // Escapes HTML special characters in attribute values as HTML entities
+        let newTodo = sanitizer.escape(req.body.newtodo);
         if (req.body.newtodo != '') {
-            todolist.push(req.body.newtodo);
+            todolist.push(newTodo);
         }
         res.redirect('/todo');
     })
@@ -64,7 +68,8 @@ app.get('/todo', function (req, res) {
     // Edit item in the todo list 
     .put('/todo/edit/:id', function (req, res) {
         let todoIdx = req.params.id;
-        let editTodo = req.body.editTodo;
+        // Escapes HTML special characters in attribute values as HTML entities
+        let editTodo = sanitizer.escape(req.body.editTodo);
         if (todoIdx != '' && editTodo != '') {
             todolist[todoIdx] = editTodo;
         }
