@@ -45,7 +45,14 @@ docker-compose up --build -d
 
 and visit http://localhost:8080 in your browser
 
+## Helm chart
+
+To deploy the application to Minikube kindly see [`todo-list-chart/`](./todo-list-chart/).
+
+## Requirements
+
 ### High level application requirements
+
 1. Multiple users should be able to view the shared public todo list
 2. Should be able to add items
 3. Should be able to delete items
@@ -53,17 +60,24 @@ and visit http://localhost:8080 in your browser
 5. Must be able to deploy in docker (Missing feature)
 
 ### Tasks
+
 1. Add missing requirement #4 to the application
 2. Add sufficient test coverage to the application and update readme on how to run the tests
 3. Add missing requirement #5 to the application (Dockerfile and update readme with instructions)
 
 ### Bonus
+
 4. Display test coverage after tests are executed
 5. Find and fix the XSS vulnerability in the application. Also make sure that it wont happen again by including a test.
+
+### Optional extra
+
+ 6. Add a Helm chart for the application that is deployable on minikube along with the required readme entry.
 
 > ### Notes
 > - Update the code as needed and document what you have done in the readme below
 > - Will be nice if you can git tag the tasks by number
 
 ### Solution
+
 Explain what you have done here and why...

@@ -1,0 +1,7 @@
+apiVersion: v1
+appVersion: "1.0"
+description: A Helm chart for the todo-list-app
+name: todo-list-chart
+version: 0.1.0
+home: https://github.com/thobalose/todo-list-app
+
