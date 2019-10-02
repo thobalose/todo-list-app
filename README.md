@@ -1,11 +1,20 @@
 # Todo list exercise
 
+## Prerequisites 
+
+- [nodejs](https://nodejs.org/en/)
+> - [docker](https://docs.docker.com/) and [docker-compose](https://docs.docker.com/compose/)
+> - [helm](https://helm.sh/) and [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+
 ## Install
 
-- Install https://nodejs.org/en/
-- Download archive from link provided
-- Unzip file and cd into it
-- run `npm install`
+```sh
+git clone https://github.com/thobalose/todo-list-app.git ; cd todo-list-app/
+```
+
+```sh
+npm install
+```
 
 ## Run
 
@@ -72,7 +81,7 @@ To deploy the application to Minikube kindly see [`todo-list-chart/`](./todo-lis
 
 ### Optional extra
 
- 6. Add a Helm chart for the application that is deployable on minikube along with the required readme entry.
+ 6. Add a Helm chart for the application that is deployable on Minikube along with the required readme entry.
 
 > ### Notes
 > - Update the code as needed and document what you have done in the readme below
@@ -80,4 +89,10 @@ To deploy the application to Minikube kindly see [`todo-list-chart/`](./todo-lis
 
 ### Solution
 
-Explain what you have done here and why...
+- Added `edittodo.ejs` page to allow for editing of todo.
+- Used `method-override` middleware in order to use `PUT` HTTP verb to edit item.
+- Used `docker` and `docker-compose` to containerized deployment.
+- Used `mocha`, `chai`, and `supertest` for testing.
+- Used [`istanbul`](https://istanbul.js.org/) to display test coverage.
+- Used `sanitizer` module to mitigate the XSS vulnerability.
+- Added Helm Chart.
