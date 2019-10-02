@@ -1,16 +1,27 @@
 # Todo list exercise
 
-### Install
+## Install
 
 - Install https://nodejs.org/en/
 - Download archive from link provided
 - Unzip file and cd into it
 - run `npm install`
 
-### Run
-`node app.js`
+## Run
+
+```sh
+node app.js
+```
 
 Visit http://localhost:8080 in your browser
+
+## Test
+
+To run tests
+
+```sh
+npm test
+```
 
 ### High level application requirements
 1. Multiple users should be able to view the shared public todo list
@@ -21,7 +32,7 @@ Visit http://localhost:8080 in your browser
 
 ### Tasks
 1. Add missing requirement #4 to the application
-2. Add sufficient test coverage to the application and update readme on howto run the tests
+2. Add sufficient test coverage to the application and update readme on how to run the tests
 3. Add missing requirement #5 to the application (Dockerfile and update readme with instructions)
 
 ### Bonus

@@ -7,6 +7,15 @@
     "express": "^4.14.0",
     "method-override": "^3.0.0"
   },
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --exit"
+  },
   "author": "riaan@entersekt.com",
-  "description": "Basic to do list exercise"
+  "description": "Basic to do list exercise",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1",
+    "supertest": "^4.0.2"
+  }
 }
