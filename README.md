@@ -23,6 +23,28 @@ To run tests
 npm test
 ```
 
+## Docker
+
+To build a docker image for the todo-list-app and run it inside a container execute
+
+```sh
+docker build -t thoba/todo-list-app .
+```
+
+The above with create an image with the `latest` tag. To run the container execute
+
+```sh
+docker run -it -p 8080:8080 --name todo_list_app thoba/todo-list-app
+```
+
+You can also use `docker-compose` if you have it installed. To build and run the latest source using `docker-compose` execute
+
+```sh
+docker-compose up --build -d
+```
+
+and visit http://localhost:8080 in your browser
+
 ### High level application requirements
 1. Multiple users should be able to view the shared public todo list
 2. Should be able to add items

@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    # image: thoba/todo-list-app
+    container_name: todo_list_app
+    ports:
+      - "8080:8080"
