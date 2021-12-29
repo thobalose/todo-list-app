@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM limeytexan/todo-list-app
 
 # Create app directory
 WORKDIR /usr/src/app
